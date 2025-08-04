@@ -55,7 +55,7 @@ export default defineSiteConfig({
     },
   ],
   encrypt: {
-    enable: true,
+    enable: false,
   },
   mediumZoom: { enable: true },
   vanillaLazyload: {
