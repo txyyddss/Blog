@@ -28,6 +28,8 @@ declare module 'vue-router/auto-routes' {
     '/links/': RouteRecordInfo<'/links/', '/links', Record<never, never>, Record<never, never>>,
     '/page/[page]': RouteRecordInfo<'/page/[page]', '/page/:page', { page: ParamValue<true> }, { page: ParamValue<false> }>,
     '/posts/': RouteRecordInfo<'/posts/', '/posts', Record<never, never>, Record<never, never>>,
+    '/posts/azure-hk-evaluation': RouteRecordInfo<'/posts/azure-hk-evaluation', '/posts/azure-hk-evaluation', Record<never, never>, Record<never, never>>,
+    '/posts/azure-sg-evaluation': RouteRecordInfo<'/posts/azure-sg-evaluation', '/posts/azure-sg-evaluation', Record<never, never>, Record<never, never>>,
     '/posts/bytevirt-hk-lite-evaluation': RouteRecordInfo<'/posts/bytevirt-hk-lite-evaluation', '/posts/bytevirt-hk-lite-evaluation', Record<never, never>, Record<never, never>>,
     '/posts/bytevirt-hkt-nat-evaluation': RouteRecordInfo<'/posts/bytevirt-hkt-nat-evaluation', '/posts/bytevirt-hkt-nat-evaluation', Record<never, never>, Record<never, never>>,
     '/posts/hello-valaxy': RouteRecordInfo<'/posts/hello-valaxy', '/posts/hello-valaxy', Record<never, never>, Record<never, never>>,
