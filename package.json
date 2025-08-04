@@ -9,10 +9,15 @@
     "build:ssg": "valaxy build --ssg",
     "dev": "valaxy",
     "rss": "valaxy rss",
+    "fuse": "valaxy fuse",
     "serve": "vite preview"
   },
   "dependencies": {
     "valaxy": "0.26.1",
+    "valaxy-addon-components": "^0.1.0",
+    "valaxy-addon-hitokoto": "^0.0.1",
+    "valaxy-addon-live2d": "^0.4.0",
+    "valaxy-addon-vercount": "^0.0.6",
     "valaxy-theme-yun": "0.26.1"
   },
   "devDependencies": {

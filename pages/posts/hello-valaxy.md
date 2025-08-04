@@ -1,12 +1,11 @@
 ---
 title: Hello, Valaxy!
-date: 2022-04-01
-updated: 2022-04-01
+date: 2025-08-03
+updated: 2025-08-03
 categories: Valaxy 笔记
 tags:
   - valaxy
   - 笔记
-top: 1
 ---
 
 ## Valaxy
