@@ -3,7 +3,6 @@ import { defineValaxyConfig } from 'valaxy'
 import { addonLive2d } from 'valaxy-addon-live2d'
 import { addonHitokoto } from 'valaxy-addon-hitokoto'
 import { addonVercount } from 'valaxy-addon-vercount'
-import { addonTwikoo } from 'valaxy-addon-twikoo'
 
 
 
@@ -27,9 +26,6 @@ export default defineValaxyConfig<UserThemeConfig>({
   addons: [
     addonVercount(),
     addonHitokoto(),
-    addonTwikoo({ 
-      envId: "https://comments.1919801.xyz"
-    }),
     addonLive2d({
       enableLive2D: ['Tia', 'Pio', 'Type95', 'HK416'],
       widthLimit: 290,
