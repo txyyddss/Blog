@@ -10,7 +10,7 @@ tags:
   - 家宽
 ---
 三网直连,流媒体解锁,IP质量优秀,平峰期延迟低
-![](./speed.JPG)
+![](./hktspeed.jpg)
 ::: warning
 
 实测速度极慢,晚高峰ping可达300ms+

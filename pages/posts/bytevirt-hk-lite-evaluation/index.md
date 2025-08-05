@@ -8,7 +8,7 @@ tags:
   - 香港
 ---
 移动直连,其他绕美,流媒体解锁,广播机房IP,[探针](https://nezha.1919801.xyz/server/3)
-![](./speed.JPG)
+![](./hkspeed.jpg)
 <!-- more -->
 ## 基础信息
 | 项目                | 结果                              |

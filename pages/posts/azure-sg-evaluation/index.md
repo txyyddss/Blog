@@ -9,7 +9,7 @@ tags:
   - 微软
 ---
 简评:三网直连,速度优秀,部分流媒体解锁,广播机房IP,[探针](https://nezha.1919801.xyz/server/1)
-![](./speed.jpg)
+![](./sgspeed.jpg)
 <!-- more -->
 ## 系统基础信息
 | 项目 | 值 |
