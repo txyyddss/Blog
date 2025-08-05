@@ -1,95 +1,13 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted } from 'vue'
 import { useIntervalFn } from '@vueuse/core'
+import { useAddonHitokoto } from 'valaxy-addon-hitokoto'
 
-// 一言数据
-const hitokoto = ref({
-  hitokoto: '加载中...',
-  from: '未知'
-})
-
-// 使用JSONP方式获取一言，绕过CORS限制
-const fetchHitokoto = () => {
-  return new Promise((resolve, reject) => {
-    const callbackName = 'hitokoto_callback_' + Date.now()
-    const script = document.createElement('script')
-  
-    // 设置全局回调函数
-    ;(window as any)[callbackName] = (data: any) => {
-      hitokoto.value = {
-        hitokoto: data.hitokoto || '获取失败',
-        from: data.from || '未知'
-      }
-      // 清理
-      document.head.removeChild(script)
-      delete (window as any)[callbackName]
-      resolve(data)
-    }
-  
-    // 创建script标签请求
-    script.src = `https://v1.hitokoto.cn/?c=a&c=b&c=c&c=d&c=e&c=f&c=g&c=h&c=i&c=j&c=k&c=l&callback=${callbackName}`
-    script.onerror = () => {
-      // 如果JSONP也失败，使用备用方案
-      hitokoto.value = {
-        hitokoto: '路漫漫其修远兮，吾将上下而求索',
-        from: '屈原《离骚》'
-      }
-      document.head.removeChild(script)
-      delete (window as any)[callbackName]
-      reject(new Error('Failed to fetch hitokoto'))
-    }
-  
-    document.head.appendChild(script)
-  })
-}
-
-// 备用方案：使用fetch with no-cors模式（虽然不能读取响应，但可以作为fallback）
-const fetchHitokotoFallback = async () => {
-  try {
-    // 尝试使用代理服务或者其他支持CORS的API
-    const proxyUrl = 'https://api.allorigins.win/get?url='
-    const targetUrl = encodeURIComponent('https://v1.hitokoto.cn/?c=a&c=b&c=c&c=d&c=e&c=f&c=g&c=h&c=i&c=j&c=k&c=l')
-  
-    const response = await fetch(proxyUrl + targetUrl)
-    const data = await response.json()
-    const hitokotoData = JSON.parse(data.contents)
-  
-    hitokoto.value = {
-      hitokoto: hitokotoData.hitokoto || '获取失败',
-      from: hitokotoData.from || '未知'
-    }
-  } catch (error) {
-    console.error('Hitokoto fetch failed:', error)
-    // 使用默认的一言
-    const defaultHitokoto = [
-      { hitokoto: '路漫漫其修远兮，吾将上下而求索', from: '屈原《离骚》' },
-      { hitokoto: '山重水复疑无路，柳暗花明又一村', from: '陆游《游山西村》' },
-      { hitokoto: '海内存知己，天涯若比邻', from: '王勃《送杜少府之任蜀州》' },
-      { hitokoto: '会当凌绝顶，一览众山小', from: '杜甫《望岳》' },
-      { hitokoto: '长风破浪会有时，直挂云帆济沧海', from: '李白《行路难》' }
-    ]
-    const randomIndex = Math.floor(Math.random() * defaultHitokoto.length)
-    hitokoto.value = defaultHitokoto[randomIndex]
-  }
-}
-
-// 组合使用JSONP和备用方案
-const getHitokoto = async () => {
-  try {
-    await fetchHitokoto()
-  } catch (error) {
-    console.warn('JSONP failed, trying fallback method')
-    await fetchHitokotoFallback()
-  }
-}
-
-// 初始加载和定时更新
-onMounted(() => {
-  getHitokoto()
-})
+// 一言功能
+const { hitokoto, fetchHitokoto } = useAddonHitokoto()
 
 useIntervalFn(() => {
-  getHitokoto()
+  fetchHitokoto()
 }, 6000)
 
 // Twikoo 评论系统初始化
@@ -122,8 +40,8 @@ onMounted(() => {
       <div class="hitokoto-content">
         <div class="quote-icon">❝</div>
         <div class="hitokoto-text">
-          <p class="hitokoto-quote">{{ hitokoto.hitokoto }}</p>
-          <p class="hitokoto-source">—— {{ hitokoto.from }}</p>
+          <p class="hitokoto-quote">{{ hitokoto.hitokoto || '加载中...' }}</p>
+          <p class="hitokoto-source">—— {{ hitokoto.from || '未知' }}</p>
         </div>
         <div class="quote-icon quote-end">❞</div>
       </div>
@@ -139,10 +57,10 @@ onMounted(() => {
 
 <style scoped>
 .hitokoto-banner {
-  margin-top: 40px;
-  padding: 10px;
+  margin-top: 10px;
+  padding: 20px;
   margin-bottom: 0px;
-  border-radius: 8px;
+  border-radius: 16px;
   position: relative;
   overflow: hidden;
 
