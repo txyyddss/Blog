@@ -3,6 +3,7 @@ import { defineValaxyConfig } from 'valaxy'
 import { addonLive2d } from 'valaxy-addon-live2d'
 import { addonHitokoto } from 'valaxy-addon-hitokoto'
 import { addonVercount } from 'valaxy-addon-vercount'
+import { addonTwikoo } from 'valaxy-addon-twikoo'
 
 
 
@@ -16,29 +17,48 @@ const safelist = [
  */
 export default defineValaxyConfig<UserThemeConfig>({
   // site config see site.config.ts
-
+  siteConfig: {
+    // 启用评论
+    comment: {
+      enable: true
+    },
+  },
   theme: 'yun',
   addons: [
     addonVercount(),
     addonHitokoto(),
+    addonTwikoo({ 
+      envId: "https://comments.1919801.xyz"
+    }),
     addonLive2d({
-      enableLive2D: ['Tia', 'Pio'],
+      enableLive2D: ['Tia', 'Pio', 'Type95', 'HK416'],
+      widthLimit: 290,
       live2DCollection: {
-        XiaoYun: {
-          message: '来自云游君的小云 ~',
-          models: ['https://cdn.jsdelivr.net/npm/@yunyoujun/live2d@latest/小云.model3.json'],
+        Type95: {
+          models: [
+            'https://registry.npmmirror.com/weblive2d/latest/files/model/95type/95type_3702/normal/index.json',
+            'https://registry.npmmirror.com/weblive2d/latest/files/model/95type/95type_3702/destroy/index.json',
+          ],
         },
-        // https://github.com/fghrsh/live2d_api
-        Tia: {
-          message: '来自 Potion Maker 的 Tia 酱 ~',
-          models: 'https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/Potion-Maker/Tia/index.json',
-        },
-        Pio: {
-          message: '来自 Potion Maker 的 Pio 酱 ~',
-          models: 'https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/Potion-Maker/Pio/index.json',
+        HK416: {
+          models: [
+            'https://registry.npmmirror.com/weblive2d/latest/files/model/HK416/HK416_3401/destroy/index.json',
+            'https://registry.npmmirror.com/weblive2d/latest/files/model/HK416/HK416_3401/normal/index.json',
+            'https://registry.npmmirror.com/weblive2d/latest/files/model/HK416/HK416_805/normal/index.json',
+            'https://registry.npmmirror.com/weblive2d/latest/files/model/HK416/HK416_805/destroy/index.json',
+          ],
         },
       },
-    })
+      tools: {
+        hitokoto: {
+          visible: true,
+        },
+        asteroids: {
+          visible: true,
+        },
+      },
+      skipHello: true,
+    }),
   ],
   themeConfig: {
     banner: {

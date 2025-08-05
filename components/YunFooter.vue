@@ -1,21 +1,14 @@
 <script lang="ts" setup>
-import { useAddonVercount } from 'valaxy-addon-vercount'
+import { useScriptTag } from '@vueuse/core'
+import YunFooter from 'valaxy-theme-yun/components/YunFooter.vue'
 
-const { site } = useAddonVercount()
+useScriptTag('//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js')
 </script>
 
 <template>
-  <div class="vercount-container">
-    <span>访问数: {{ site.pv }} | 访客数: {{ site.uv }}</span>
-  </div>
+  <YunFooter>
+    <!-- 自定义页脚内容 -->
+    <div>本站总访问量 <span id="busuanzi_value_site_pv" /> 次</div>
+    <div>本站访客数 <span id="busuanzi_value_site_uv" /> 人次</div>
+  </YunFooter>
 </template>
-
-<style scoped>
-.vercount-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-}
-</style>
