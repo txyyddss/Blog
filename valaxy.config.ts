@@ -25,7 +25,11 @@ export default defineValaxyConfig<UserThemeConfig>({
   theme: 'yun',
   addons: [
     addonVercount(),
-    addonHitokoto(),
+    addonHitokoto({
+      api: "intl",
+      minLength: 0, // 最短句子长度
+      maxLength: 20 // 最长句子长度
+    }),
     addonLive2d({
       enableLive2D: ['Tia', 'Pio', 'Type95', 'HK416'],
       widthLimit: 290,

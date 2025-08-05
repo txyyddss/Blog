@@ -57,10 +57,10 @@ onMounted(() => {
 
 <style scoped>
 .hitokoto-banner {
-  margin-top: 10px;
-  padding: 20px;
+  margin-top: 45px;
+  padding: 0px;
   margin-bottom: 0px;
-  border-radius: 16px;
+  border-radius: 0px;
   position: relative;
   overflow: hidden;
 
