@@ -6,8 +6,8 @@ export default defineSiteConfig({
   title: 'TX的小站',
   author: {
     name: 'TX',
-    avatar: './avatar.png',
-    intro: '个人简介'
+    avatar: '/avatar.png',
+    intro: '关于我'
   },
   description: '一个鸽子,咕咕咕',
   social: [
