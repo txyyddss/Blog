@@ -6,7 +6,7 @@ export default defineSiteConfig({
   title: 'TX的小站',
   author: {
     name: 'TX',
-    avatar: 'https://img.1919801.xyz/file/AgACAgUAAyEGAASJOwb3AANQaJB1gVy_b5zj_P09hHJ5YJioYOQAAj_IMRuOWoBU_E_YH4RgBYABAAMCAANtAAM2BA.png',
+    avatar: './avatar.png',
     intro: '个人简介'
   },
   description: 'TX的小站',

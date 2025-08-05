@@ -1,7 +1,16 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, computed } from 'vue'
+import { useRoute } from 'vue-router'
 import { useIntervalFn } from '@vueuse/core'
 import { useAddonHitokoto } from 'valaxy-addon-hitokoto'
+
+// 获取当前路由
+const route = useRoute()
+
+// 判断是否为主页
+const isHomePage = computed(() => {
+  return route.path === '/' || route.path === '/index.html'
+})
 
 // 一言功能
 const { hitokoto, fetchHitokoto } = useAddonHitokoto()
@@ -12,47 +21,53 @@ useIntervalFn(() => {
 
 // Twikoo 评论系统初始化
 onMounted(() => {
-  // 加载 Twikoo 脚本
-  const twikooScript = document.createElement('script')
-  twikooScript.src = 'https://cdn.jsdelivr.net/npm/twikoo@1.6.44/dist/twikoo.min.js'
-  twikooScript.async = true
+  // 只在非主页初始化评论系统
+  if (!isHomePage.value) {
+    // 加载 Twikoo 脚本
+    const twikooScript = document.createElement('script')
+    twikooScript.src = 'https://registry.npmmirror.com/twikoo/1.6.44/files/dist/twikoo.min.js'
+    twikooScript.async = true
 
-  twikooScript.onload = () => {
-    // 脚本加载完成后初始化 Twikoo
-    // @ts-ignore
-    twikoo.init({
-      envId: 'https://comments.1919801.xyz',
-      el: '.comment',
-      // region: 'ap-guangzhou',
-      // path: location.pathname,
-      // lang: 'zh-CN',
-    })
+    twikooScript.onload = () => {
+      // 脚本加载完成后初始化 Twikoo
+      // @ts-ignore
+      twikoo.init({
+        envId: 'https://comments.1919801.xyz',
+        el: '.comment',
+        // region: 'ap-guangzhou',
+        // path: location.pathname,
+        // lang: 'zh-CN',
+      })
+    }
+
+    document.head.appendChild(twikooScript)
   }
-
-  document.head.appendChild(twikooScript)
 })
 </script>
 
 <template>
-  <!-- 美化的一言横幅 -->
-  <div class="hitokoto-banner">
-    <div class="hitokoto-container">
-      <div class="hitokoto-content">
-        <div class="quote-icon">❝</div>
-        <div class="hitokoto-text">
-          <p class="hitokoto-quote">{{ hitokoto.hitokoto || '加载中...' }}</p>
-          <p class="hitokoto-source">—— {{ hitokoto.from || '未知' }}</p>
+  <!-- 只在非主页显示 -->
+  <div v-if="!isHomePage">
+    <!-- 美化的一言横幅 -->
+    <div class="hitokoto-banner">
+      <div class="hitokoto-container">
+        <div class="hitokoto-content">
+          <div class="quote-icon">❝</div>
+          <div class="hitokoto-text">
+            <p class="hitokoto-quote">{{ hitokoto.hitokoto || '加载中...' }}</p>
+            <p class="hitokoto-source">—— {{ hitokoto.from || '未知' }}</p>
+          </div>
+          <div class="quote-icon quote-end">❞</div>
         </div>
-        <div class="quote-icon quote-end">❞</div>
-      </div>
-      <div class="hitokoto-decoration">
-        <div class="decoration-line"></div>
+        <div class="hitokoto-decoration">
+          <div class="decoration-line"></div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- 评论区 -->
-  <div id="comment"></div>
+    <!-- 评论区 -->
+    <div id="comment"></div>
+  </div>
 </template>
 
 <style scoped>
