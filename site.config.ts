@@ -9,13 +9,19 @@ export default defineSiteConfig({
     avatar: './avatar.png',
     intro: '个人简介'
   },
-  description: 'TX的小站',
+  description: '一个鸽子,咕咕咕',
   social: [
     {
       name: 'RSS',
       link: '/atom.xml',
       icon: 'i-ri-rss-line',
       color: 'orange',
+    },
+    {
+      name: '主页',
+      link: 'https://1919801.xyz',
+      icon: 'i-ri-home-2-fill',
+      color: 'black',
     },
     {
       name: 'QQ',
@@ -48,9 +54,9 @@ export default defineSiteConfig({
       color: '#8E71C1',
     },
     {
-      name: '主页',
-      link: 'https://1919801.xyz',
-      icon: 'i-ri-home-2-fill',
+      name: '友链接力',
+      link: 'https://www.travellings.cn/go.html',
+      icon: 'icon i-ri-train-line',
       color: 'black',
     },
   ],

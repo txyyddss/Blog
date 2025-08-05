@@ -27,8 +27,8 @@ export default defineValaxyConfig<UserThemeConfig>({
     addonVercount(),
     addonHitokoto({
       api: "intl",
-      minLength: 0, // 最短句子长度
-      maxLength: 20 // 最长句子长度
+      minLength: 5, // 最短句子长度
+      maxLength: 15 // 最长句子长度
     }),
     addonLive2d({
       enableLive2D: ['Tia', 'Pio', 'Type95', 'HK416'],
@@ -54,10 +54,10 @@ export default defineValaxyConfig<UserThemeConfig>({
           visible: true,
         },
         asteroids: {
-          visible: true,
+          visible: false,
         },
       },
-      skipHello: true,
+      skipHello: false,
     }),
   ],
   themeConfig: {
@@ -65,7 +65,6 @@ export default defineValaxyConfig<UserThemeConfig>({
       enable: true,
       title: 'TXの小站',
     },
-
     pages: [
       {
         name: '我的小伙伴们',
@@ -84,7 +83,7 @@ export default defineValaxyConfig<UserThemeConfig>({
     footer: {
       since: 2025,
       beian: {
-        enable: true,
+        enable: false,
         icp: '粤ICP备114514号',
       },
     },
