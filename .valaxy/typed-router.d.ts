@@ -34,6 +34,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/bytevirt-hkt-nat-evaluation/': RouteRecordInfo<'/posts/bytevirt-hkt-nat-evaluation/', '/posts/bytevirt-hkt-nat-evaluation', Record<never, never>, Record<never, never>>,
     '/posts/hello-valaxy': RouteRecordInfo<'/posts/hello-valaxy', '/posts/hello-valaxy', Record<never, never>, Record<never, never>>,
     '/posts/hinet-evaluation/': RouteRecordInfo<'/posts/hinet-evaluation/', '/posts/hinet-evaluation', Record<never, never>, Record<never, never>>,
+    '/posts/sz-china-mobile-evaluation': RouteRecordInfo<'/posts/sz-china-mobile-evaluation', '/posts/sz-china-mobile-evaluation', Record<never, never>, Record<never, never>>,
     '/tags/': RouteRecordInfo<'/tags/', '/tags', Record<never, never>, Record<never, never>>,
   }
 }
