@@ -47,7 +47,7 @@ uci commit firewall
 请求体：json={"listen_port":#{port}}
 ![](https://img.1919801.xyz/file/AgACAgUAAyEGAASJOwb3AAN8aJxiQP8dp5B8uqJDat-UTO48XiAAAtzJMRtwL-hULvsplkkuQqgBAAMCAAN5AAM2BA.jpeg)
 # 大功告成
-你会发现,原本几十K每秒的种子上传,现在可以跑满你的上传带宽了。QB界面最底下的小火苗,也变成了绿色的地球。
+你会发现,原本几十K每秒的种子上传,现在可以跑满你的上传带宽了。
 拓展阅读:[使用 cURL 自动修改 Transmission 的监听端口](https://www.bilibili.com/opus/924997717764079639)
 
 *参考文章:[「LUCKY STUN穿透」使用 Webhook 自动修改 qbittorrent 的监听端口](https://www.bilibili.com/opus/895655343026077747) | [记一次使用Lucky给qbittorreent下载加速](https://post.smzdm.com/p/aklpzdke/) | [打通大内网第二期 让BT下载畅通无阻 （基于Lucky的STUN穿透）](https://zhuanlan.zhihu.com/p/668460346)*
